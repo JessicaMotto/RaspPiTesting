@@ -29,8 +29,7 @@ GPIO.setup(R_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Input with pull-up
 GPIO.setup(U_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Input with pull-up
 GPIO.setup(D_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Input with pull-up
 GPIO.setup(C_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Input with pull-up
-GPIO.setup(26, GPIO.OUT)
-#GPIO.setup(LED_pin, GPIO.OUT)
+GPIO.setup(LED_pin, GPIO.OUT)
 #pinMode(LED_pin, OUTPUT)
 #pinMode(LED_pin, INPUT)
 #digitalWrite(LED_pin, LOW)
@@ -82,10 +81,10 @@ try:
       
     if GPIO.input(D_pin): # button is released
       draw.polygon([(30, 60), (40, 42), (20, 42)], outline=255, fill=0) # Down
-      GPIO.output(26, GPIO.LOW)
+      GPIO.output(LED_pin, GPIO.LOW)
     else: # button is pressed:
       draw.polygon([(30, 60), (40, 42), (20, 42)], outline=255, fill=1) # Down filled
-      GPIO.output(26, GPIO.HIGH)
+      GPIO.output(LED_pin, GPIO.HIGH)
       #draw.rectangle((0, 0, disp.width, disp.height), outline=0, fill=0)
       #digitalWrite(13, digitalRead(2))
       #draw.text((10, 10), 'Hello', font=font, fill=255)
