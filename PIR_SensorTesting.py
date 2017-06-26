@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BOARD)
-pir = 17
+pir = 26
 GPIO.setup(pir, GPIO.IN)
 print "Waiting for sensor to settle"
 time.sleep(2)
