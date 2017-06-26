@@ -17,6 +17,8 @@ D_pin = 16
 A_pin = 25
 B_pin = 12
 LED_pin = 26
+#PIR_pin = 23
+#font = ImageFont.load_default()
 
 GPIO.setmode(GPIO.BCM)
 
@@ -28,6 +30,10 @@ CGPIO.setup(U_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Input with pull-up
 GPIO.setup(D_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Input with pull-up
 GPIO.setup(C_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Input with pull-up
 GPIO.setup(26, GPIO.OUT)
+#GPIO.setup(LED_pin, GPIO.OUT)
+#pinMode(LED_pin, OUTPUT)
+#pinMode(LED_pin, INPUT)
+#digitalWrite(LED_pin, LOW)
 
 # Raspberry Pi pin configuration:
 RST = 24
@@ -63,38 +69,49 @@ try:
       draw.polygon([(20, 20), (30, 2), (40, 20)], outline=255, fill=0)  # Up
     else: # button is pressed:
       draw.polygon([(20, 20), (30, 2), (40, 20)], outline=255, fill=1)  # Up filled
+      
     if GPIO.input(L_pin): # button is released
       draw.polygon([(0, 30), (18, 21), (18, 41)], outline=255, fill=0)  # Left
     else: # button is pressed:
       draw.polygon([(0, 30), (18, 21), (18, 41)], outline=255, fill=1)  # Left filled
+      
     if GPIO.input(R_pin): # button is released
       draw.polygon([(60, 30), (42, 21), (42, 41)], outline=255, fill=0) # Right
     else: # button is pressed:
       draw.polygon([(60, 30), (42, 21), (42, 41)], outline=255, fill=1) # Right filled
+      
     if GPIO.input(D_pin): # button is released
       draw.polygon([(30, 60), (40, 42), (20, 42)], outline=255, fill=0) # Down
       GPIO.output(26, GPIO.LOW)
     else: # button is pressed:
       draw.polygon([(30, 60), (40, 42), (20, 42)], outline=255, fill=1) # Down filled
       GPIO.output(26, GPIO.HIGH)
+      #draw.rectangle((0, 0, disp.width, disp.height), outline=0, fill=0)
+      #digitalWrite(13, digitalRead(2))
+      #draw.text((10, 10), 'Hello', font=font, fill=255)
+      
     if GPIO.input(C_pin): # button is released
       draw.rectangle((20, 22,40,40), outline=255, fill=0) # Center
     else: # button is pressed:
       draw.rectangle((20, 22,40,40), outline=255, fill=1) # Center filled
+      
     if GPIO.input(A_pin): # button is released
       draw.ellipse((70,40,90,60), outline=255, fill=0) # A button
     else: # button is pressed:
       draw.ellipse((70,40,90,60), outline=255, fill=1) # A button filled
+      
     if GPIO.input(B_pin): # button is released
       draw.ellipse((100,20,120,40), outline=255, fill=0) # B button
     else: # button is pressed:
       draw.ellipse((100, 20, 120, 40), outline=255, fill=1) # B button filled
+      
     if not GPIO.input(A_pin) and not GPIO.input(B_pin) and not GPIO.input(C$
       catImage = Image.open('happycat_oled_64.ppm').convert('1')
       disp.image(catImage)
     else:
       # Display image.
         disp.image(image)
+                                                                          
     disp.display()
     time.sleep(0.01)
     
