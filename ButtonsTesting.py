@@ -1,5 +1,3 @@
-#THIS IS A TEST
-
 import RPi.GPIO as GPIO
 import time
 import AdaFruit_GPIO.SPI as SPI
@@ -106,12 +104,8 @@ try:
       draw.ellipse((100,20,120,40), outline=255, fill=0) # B button
     else: # button is pressed:
       draw.ellipse((100, 20, 120, 40), outline=255, fill=1) # B button filled
-<<<<<<< HEAD
+
     if not GPIO.input(A_pin) and not GPIO.input(B_pin) and not GPIO.input(C_pin):
-=======
-      
-    if not GPIO.input(A_pin) and not GPIO.input(B_pin) and not GPIO.input(C$
->>>>>>> 94ac2b3f0d08bd42f33d2f2fc123bf99d1683499
       catImage = Image.open('happycat_oled_64.ppm').convert('1')
       disp.image(catImage)
     else:
