@@ -1,8 +1,8 @@
 import RPi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BOARD)
-PIR_pin = 11
-LED_pin = 3
+PIR_pin = 17
+LED_pin = 23
 GPIO.setup(PIR_pin, GPIO.IN)
 GPIO.setup(LED_pin, GPIO.OUT)
 while True:
