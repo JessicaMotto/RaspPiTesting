@@ -7,11 +7,11 @@ GPIO.setup(PIR_pin, GPIO.IN)
 GPIO.setup(LED_pin, GPIO.OUT)
 while True:
   i=GPIO.input(PIR_pin)
-  if i==0
+  if i==0:
     print 'No intruders', i
     GPIO.output(LED_pin, 0)
     time.sleep(0.1)
-  elif i==1
+  elif i==1:
     print 'Intruder detected', i
     GPIO.output(LED_pin, 1)
     time.sleep(0.1)
